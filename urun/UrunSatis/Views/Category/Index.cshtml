@@ -1,0 +1,371 @@
+@{
+    ViewData["Title"] = "Kategoriler";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Kategorilerimiz</h1>
+        <button class="btn btn-primary" onclick="showAddModal()">
+            <i class="fas fa-plus"></i> Yeni Kategori Ekle
+        </button>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="categoryTable" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Kategori Adı</th>
+                            <th>Açıklama</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Kategori Ekleme/Düzenleme Modal -->
+<div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Kategori Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="categoryForm">
+                    <input type="hidden" id="categoryId" name="Id" />
+                    <div class="form-group">
+                        <label>Kategori Adı</label>
+                        <input type="text" class="form-control" id="categoryName" name="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        <textarea class="form-control" id="categoryDescription" name="Description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="categoryIsActive" name="IsActive" checked>
+                            <label class="custom-control-label" for="categoryIsActive">Aktif</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-primary" onclick="saveCategory()">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        // Document Ready
+        $(document).ready(function () {
+            // Datatable Initialization
+            loadTable();
+
+            // Event Listener: Save Button
+            $('#saveCategoryButton').on('click', function () {
+                saveCategory();
+            });
+
+            // Event Listener: Add Category Button
+            $('#addCategoryButton').on('click', function () {
+                showAddModal();
+            });
+        });
+
+        // Function: Load DataTable
+        function loadTable() {
+            table = $('#categoryTable').DataTable({
+                ajax: {
+                    url: '/Category/GetCategories',
+                    type: 'GET',
+                    datatype: 'json'
+                },
+                columns: [
+                    { data: 'id' },
+                    { data: 'name' },
+                    { data: 'description' },
+                    {
+                        data: 'isActive',
+                        render: function (data) {
+                            return data ? '<span class="badge badge-success">Aktif</span>' : '<span class="badge badge-danger">Pasif</span>';
+                        }
+                    },
+                    {
+                        data: 'id',
+                        render: function (data) {
+                            return `<button class="btn btn-sm btn-info" onclick="showEditModal(${data})"><i class="fas fa-edit"></i></button>
+                                                            <button class="btn btn-sm btn-danger" onclick="DeleteCategory(${data})"><i class="fas fa-trash"></i></button>`;
+                        }
+                    }
+                ],
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.24/i18n/Turkish.json'
+                }
+            });
+        }
+
+        // Function: Show Add Modal
+        function showAddModal() {
+            $('#modalTitle').text('Kategori Ekle');
+            $('#categoryForm')[0].reset();
+            $('#categoryId').val('');
+            $('#categoryModal').modal('show');
+        }
+
+        // Function: Show Edit Modal
+        function showEditModal(id) {
+            $.ajax({
+                url: `/Category/GetCategory/${id}`,
+                type: 'GET',
+                success: function (response) {
+                    $('#modalTitle').text('Kategori Düzenle');
+                    $('#categoryId').val(response.id);
+                    $('#categoryName').val(response.name);
+                    $('#categoryDescription').val(response.description);
+                    $('#categoryIsActive').prop('checked', response.isActive);
+                    $('#categoryModal').modal('show');
+                },
+                error: function () {
+                    alert('Kategori bilgileri alınamadı!');
+                }
+            });
+        }
+
+        // Function: Save Category
+        function saveCategory() {
+            const id = $('#categoryId').val();
+            if (id) {
+                updateCategory();
+            } else {
+                addCategory();
+            }
+        }
+
+        // Function: Add Category
+        function addCategory() {
+            const data = {
+                name: $('#categoryName').val(),
+                description: $('#categoryDescription').val(),
+                isActive: $('#categoryIsActive').prop('checked')
+            };
+
+            $.ajax({
+                url: '/Category/AddCategory',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    if (response.success) {
+                        $('#categoryModal').modal('hide');
+                        $('#categoryTable').DataTable().ajax.reload();
+                        alert(response.message);
+                    } else {
+                        alert(response.message);
+                        loadTable();
+                    }
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText); // Hata durumunda yanıtı kontrol edin
+                    alert('Kategori güncellenemedi!');
+                }
+            });
+        }
+
+        // Function: Update Category
+        function updateCategory() {
+            const data = {
+                id: $('#categoryId').val(),
+                name: $('#categoryName').val(),
+                description: $('#categoryDescription').val(),
+                isActive: $('#categoryIsActive').prop('checked')
+            };
+
+            $.ajax({
+                url: '/Category/UpdateCategory',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    if (response.success) {
+                        $('#categoryModal').modal('hide');
+                        $('#categoryTable').DataTable().ajax.reload();
+                        alert(response.message);
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert('Kategori güncellenemedi!');
+                }
+            });
+        }
+
+        // Function: Delete Category
+        function DeleteCategory(id) {
+            
+            if (confirm('Bu kategoriyi silmek istediğinize emin misiniz?')) {
+                $.ajax({
+                    url: `/Category/DeleteCategory/${id}`,
+                    type: 'POST',
+                    success: function (response) {
+                        if (response.success) {
+                            $('#categoryTable').DataTable().ajax.reload();
+                            alert(response.message);
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Kategori silinemedi!');
+                    }
+                });
+            }
+        }
+
+    </script>
+
+
+
+   @*  <script>
+        let table;
+        let isEdit = false;
+
+        $(document).ready(function () {
+            loadTable();
+        });
+
+        function loadTable() {
+            table = $('#categoryTable').DataTable({
+                ajax: {
+                    url: '/Category/GetCategories',
+                    type: 'GET',
+                    datatype: 'json'
+                },
+                columns: [
+                    { data: 'id' },
+                    { data: 'name' },
+                    { data: 'description' },
+                    {
+                        data: 'isActive',
+                        render: function (data) {
+                            return data ? '<span class="badge badge-success">Aktif</span>' : '<span class="badge badge-danger">Pasif</span>';
+                        }
+                    },
+                    {
+                        data: 'id',
+                        render: function (data) {
+                            return `<button class="btn btn-sm btn-info" onclick="editCategory(${data})"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteCategory(${data})"><i class="fas fa-trash"></i></button>`;
+                        }
+                    }
+                ],
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.24/i18n/Turkish.json'
+                }
+            });
+        }
+
+        function showAddModal() {
+            isEdit = false;
+            $('#modalTitle').text('Kategori Ekle');
+            $('#categoryForm')[0].reset();
+            $('#categoryModal').modal('show');
+        }
+
+        function editCategory(id) {
+            isEdit = true;
+            $('#modalTitle').text('Kategori Düzenle');
+            
+            $.get(`/Category/GetCategory/${id}`, function (data) {
+                $('#categoryId').val(data.id);
+                $('#categoryName').val(data.name);
+                $('#categoryDescription').val(data.description);
+                $('#categoryIsActive').prop('checked', data.isActive);
+                $('#categoryModal').modal('show');
+            });
+        }
+
+        function saveCategory() {
+            if ($('#categoryId').val()) {
+                // Güncelleme
+                updateCategory();
+            } else {
+                // Ekleme
+                addCategory();
+            }
+        }
+        function updateCategory() {
+            const category = {
+                id: $('#categoryId').val(),
+                name: $('#categoryName').val(),
+                description: $('#categoryDescription').val(),
+                isActive: $('#categoryIsActive').prop('checked')
+            };
+
+            $.ajax({
+                url: '/Category/UpdateCategory',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(category),
+                success: function (response) {
+                    if (response.success) {
+                        $('#categoryModal').modal('hide');
+                        table.ajax.reload();
+                    } else {
+                        alert(response.message || 'Güncelleme işlemi başarısız oldu!');
+                    }
+                },
+                error: function () {
+                    alert('Kategori güncellenirken hata oluştu!');
+                }
+            });
+        }
+        function addCategory() {
+            const category = {
+                name: $('#categoryName').val(),
+                description: $('#categoryDescription').val(),
+                isActive: $('#categoryIsActive').prop('checked')
+            };
+
+            $.ajax({
+                url: '/Category/AddCategory',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(category),
+                success: function (response) {
+                    if (response.success) {
+                        $('#categoryModal').modal('hide');
+                        table.ajax.reload();
+                    } else {
+                        alert(response.message || 'Ekleme işlemi başarısız oldu!');
+                    }
+                },
+                error: function () {
+                    alert('Kategori eklenirken hata oluştu!');
+                }
+            });
+        }
+        function deleteCategory(id) {
+            if (confirm('Bu kategoriyi silmek istediğinizden emin misiniz?')) {
+                $.post(`/Category/DeleteCategory/${id}`, function () {
+                    table.ajax.reload();
+                });
+            }
+        }
+    </script> *@
+} 

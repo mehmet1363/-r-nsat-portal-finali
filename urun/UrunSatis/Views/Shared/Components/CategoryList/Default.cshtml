@@ -1,0 +1,8 @@
+@model IEnumerable<urun.Models.Category>
+
+@foreach (var category in Model.Where(c => c.IsActive))
+{
+    <a href="#" class="list-group-item list-group-item-action">
+        @category.Name
+    </a>
+} 

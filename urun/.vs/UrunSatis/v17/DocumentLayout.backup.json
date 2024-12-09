@@ -1,0 +1,149 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mehmet Ali\\Desktop\\urun\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|c:\\users\\mehmet ali\\desktop\\urun\\urunsatis\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|solutionrelative:urunsatis\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|c:\\users\\mehmet ali\\desktop\\urun\\urunsatis\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|solutionrelative:urunsatis\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|c:\\users\\mehmet ali\\desktop\\urun\\urunsatis\\views\\shared\\_sidenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|solutionrelative:urunsatis\\views\\shared\\_sidenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|c:\\users\\mehmet ali\\desktop\\urun\\urunsatis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|solutionrelative:urunsatis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|c:\\users\\mehmet ali\\desktop\\urun\\urunsatis\\libman.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|solutionrelative:urunsatis\\libman.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|c:\\users\\mehmet ali\\desktop\\urun\\urunsatis\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|solutionrelative:urunsatis\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|c:\\users\\mehmet ali\\desktop\\urun\\urunsatis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|solutionrelative:urunsatis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|c:\\users\\mehmet ali\\desktop\\urun\\urunsatis\\migrations\\20241209224359_mig1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F40E0F5-DDF9-4DC5-A6D3-D914BD1653E9}|UrunSatis\\UrunSatisUI.csproj|solutionrelative:urunsatis\\migrations\\20241209224359_mig1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "UrunSatis\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "UrunSatis\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADIAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-09T22:49:48.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_adminLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Views\\Shared\\_adminLayout.cshtml",
+              "RelativeDocumentMoniker": "UrunSatis\\Views\\Shared\\_adminLayout.cshtml",
+              "ToolTip": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Views\\Shared\\_adminLayout.cshtml",
+              "RelativeToolTip": "UrunSatis\\Views\\Shared\\_adminLayout.cshtml",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-09T22:48:55.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_SideNav.cshtml",
+              "DocumentMoniker": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Views\\Shared\\_SideNav.cshtml",
+              "RelativeDocumentMoniker": "UrunSatis\\Views\\Shared\\_SideNav.cshtml",
+              "ToolTip": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Views\\Shared\\_SideNav.cshtml",
+              "RelativeToolTip": "UrunSatis\\Views\\Shared\\_SideNav.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACcAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-09T22:48:43.226Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "libman.json",
+              "DocumentMoniker": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\libman.json",
+              "RelativeDocumentMoniker": "UrunSatis\\libman.json",
+              "ToolTip": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\libman.json",
+              "RelativeToolTip": "UrunSatis\\libman.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-09T22:45:04.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20241209224359_mig1.cs",
+              "DocumentMoniker": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Migrations\\20241209224359_mig1.cs",
+              "RelativeDocumentMoniker": "UrunSatis\\Migrations\\20241209224359_mig1.cs",
+              "ToolTip": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Migrations\\20241209224359_mig1.cs",
+              "RelativeToolTip": "UrunSatis\\Migrations\\20241209224359_mig1.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T22:43:59.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\appsettings.json",
+              "RelativeDocumentMoniker": "UrunSatis\\appsettings.json",
+              "ToolTip": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\appsettings.json",
+              "RelativeToolTip": "UrunSatis\\appsettings.json",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAYwAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-09T22:40:40.398Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "UrunSatis\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Controllers\\UserController.cs",
+              "RelativeToolTip": "UrunSatis\\Controllers\\UserController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAkwEEAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T22:39:29.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Program.cs",
+              "RelativeDocumentMoniker": "UrunSatis\\Program.cs",
+              "ToolTip": "C:\\Users\\mehmet Ali\\Desktop\\urun\\UrunSatis\\Program.cs",
+              "RelativeToolTip": "UrunSatis\\Program.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAswCUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T22:39:12.932Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

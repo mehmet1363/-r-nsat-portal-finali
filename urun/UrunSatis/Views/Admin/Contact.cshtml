@@ -1,0 +1,111 @@
+@{
+    ViewData["Title"] = "İletişim Mesajları";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">İletişim Mesajları</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="contactTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ad Soyad</th>
+                        <th>Email</th>
+                        <th>Mesaj</th>
+                        <th>Tarih</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var table = $('#contactTable').DataTable({
+                "ajax": {
+                    "url": "/Admin/GetContacts",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "fullName" },
+                    { "data": "email" },
+                    { "data": "message" },
+                    {
+                        "data": "created",
+                        "render": function (data) {
+                            return new Date(data).toLocaleDateString('tr-TR');
+                        }
+                    },
+                    {
+                        "data": "isRead",
+                        "render": function (data, type, row) {
+                            return `<div class="custom-control custom-switch">
+                                     <input type="checkbox" class="custom-control-input read-status" 
+                                            id="readSwitch_${row.id}" ${data ? 'checked' : ''} 
+                                            onchange="updateReadStatus(${row.id}, this.checked)">
+                                     <label class="custom-control-label" for="readSwitch_${row.id}">
+                                        ${data ? 'Okundu' : 'Okunmadı'}
+                                     </label>
+                                   </div>`;
+                        }
+                    },
+                    {
+                        "data": "id",
+                        "render": function (data) {
+                            return `<button class="btn btn-danger btn-sm" onclick="deleteContact(${data})">
+                                     <i class="fas fa-trash"></i> Sil
+                                   </button>`;
+                        }
+                    }
+                ],
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Turkish.json"
+                }
+            });
+        });
+
+        function deleteContact(id) {
+            if (confirm('Bu mesajı silmek istediğinizden emin misiniz?')) {
+                $.ajax({
+                    url: '/Admin/DeleteContact/' + id,
+                    type: 'POST',
+                    success: function (result) {
+                        $('#contactTable').DataTable().ajax.reload();
+                        toastr.success('Mesaj başarıyla silindi.');
+                    },
+                    error: function () {
+                        toastr.error('Mesaj silinirken bir hata oluştu.');
+                    }
+                });
+            }
+        }
+
+        function updateReadStatus(id, isRead) {
+            $.ajax({
+                url: '/Admin/UpdateContactStatus',
+                type: 'POST',
+                data: { id: id, isRead: isRead },
+                success: function (result) {
+                    $('#contactTable').DataTable().ajax.reload();
+                    toastr.success('Durum güncellendi.');
+                },
+                error: function () {
+                    toastr.error('Durum güncellenirken bir hata oluştu.');
+                }
+            });
+        }
+    </script>
+} 

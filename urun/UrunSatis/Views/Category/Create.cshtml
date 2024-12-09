@@ -1,0 +1,43 @@
+@model urun.ViewModel.CategoryModel
+
+@{
+    ViewData["Title"] = "Yeni Kategori";
+    Layout = "_adminLayout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Yeni Kategori Ekle</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" asp-for="IsActive" id="isActive">
+                    <label class="custom-control-label" asp-for="IsActive"></label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 
